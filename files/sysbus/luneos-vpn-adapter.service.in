@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.webos.service.vpn;com.palm.vpn;
+Exec=@WEBOS_INSTALL_SBINDIR@/luneos-vpn-adapter
+Type=static

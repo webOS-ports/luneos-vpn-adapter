@@ -1,0 +1,167 @@
+{
+  "vpnAgentGuid": "com.webos.vpn.openvpn",
+  "connmanType": "openvpn",
+  "note": "Prefer importProfile format=ovpn. OpenVPN.ConfigFile is the escape hatch for every directive not modelled here.",
+  "vpnFormFields": [
+    {
+      "id": "ovpnConfigFile",
+      "type": "textfield",
+      "label": "Config file",
+      "hint": "use Import to set this",
+      "editable": false,
+      "connmanProperty": "OpenVPN.ConfigFile"
+    },
+    {
+      "id": "ovpnCaCert",
+      "type": "textfield",
+      "label": "CA certificate",
+      "connmanProperty": "OpenVPN.CACert"
+    },
+    {
+      "id": "ovpnCert",
+      "type": "textfield",
+      "label": "Client certificate",
+      "connmanProperty": "OpenVPN.Cert"
+    },
+    {
+      "id": "ovpnKey",
+      "type": "textfield",
+      "label": "Client key",
+      "connmanProperty": "OpenVPN.Key"
+    },
+    {
+      "id": "ovpnAuthUserPass",
+      "type": "checkbox",
+      "label": "Username / password auth",
+      "trueValue": "-",
+      "falseValue": "",
+      "connmanProperty": "OpenVPN.AuthUserPass",
+      "note": "connman's ov_options table maps OpenVPN.AuthUserPass -> --auth-user-pass and treats the literal value \"-\" as \"query over the OpenVPN management interface\". Empty clears it. Never write \"true\"/\"false\" here."
+    },
+    {
+      "id": "ovpnProto",
+      "type": "listselector",
+      "label": "Protocol",
+      "value": "udp",
+      "connmanProperty": "OpenVPN.Proto",
+      "options": [
+        {
+          "label": "UDP",
+          "value": "udp"
+        },
+        {
+          "label": "TCP",
+          "value": "tcp"
+        }
+      ]
+    },
+    {
+      "id": "ovpnPort",
+      "type": "textfield",
+      "label": "Port",
+      "value": "1194",
+      "inputType": "number",
+      "connmanProperty": "OpenVPN.Port"
+    },
+    {
+      "id": "ovpnDeviceType",
+      "type": "listselector",
+      "label": "Device type",
+      "value": "tun",
+      "connmanProperty": "OpenVPN.DeviceType",
+      "options": [
+        {
+          "label": "tun (layer 3)",
+          "value": "tun"
+        },
+        {
+          "label": "tap (layer 2)",
+          "value": "tap"
+        }
+      ]
+    },
+    {
+      "id": "ovpnCipher",
+      "type": "textfield",
+      "label": "Cipher",
+      "connmanProperty": "OpenVPN.Cipher"
+    },
+    {
+      "id": "ovpnAuth",
+      "type": "textfield",
+      "label": "HMAC digest",
+      "connmanProperty": "OpenVPN.Auth"
+    },
+    {
+      "id": "ovpnRemoteCertTls",
+      "type": "listselector",
+      "label": "Verify peer cert type",
+      "value": "server",
+      "connmanProperty": "OpenVPN.RemoteCertTls",
+      "options": [
+        {
+          "label": "server",
+          "value": "server"
+        },
+        {
+          "label": "client",
+          "value": "client"
+        }
+      ]
+    },
+    {
+      "id": "ovpnCompLzo",
+      "type": "listselector",
+      "label": "LZO compression",
+      "value": "adaptive",
+      "connmanProperty": "OpenVPN.CompLZO",
+      "options": [
+        {
+          "label": "Adaptive",
+          "value": "adaptive"
+        },
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ]
+    },
+    {
+      "id": "ovpnMtu",
+      "type": "textfield",
+      "label": "MTU",
+      "inputType": "number",
+      "connmanProperty": "OpenVPN.MTU"
+    },
+    {
+      "id": "ovpnAuthNoCache",
+      "type": "checkbox",
+      "label": "Never cache credentials",
+      "trueValue": "true",
+      "falseValue": "false",
+      "connmanProperty": "OpenVPN.AuthNoCache"
+    }
+  ],
+  "runtimeCredentialFields": [
+    {
+      "id": "ovpnUsername",
+      "type": "textfield",
+      "label": "User name",
+      "connmanProperty": "OpenVPN.Username",
+      "required": true,
+      "note": "Requested at connect time via net.connman.vpn.Agent.RequestInput; not part of the stored profile."
+    },
+    {
+      "id": "ovpnPassword",
+      "type": "passwordfield",
+      "label": "Password",
+      "connmanProperty": "OpenVPN.Password",
+      "required": true,
+      "note": "Same; connman sets AuthErrorLimit=10 for OpenVPN before it tells the agent to clear stored credentials."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+ "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<!--
+  net.connman.vpn, as implemented by connman-vpnd (connman 2.0).
+
+  Derived from connman's doc/vpn-manager-api.txt and doc/vpn-connection-api.txt.
+  libconnman-qt carries connman_vpn_manager.xml and connman_vpn_connection.xml
+  for the same service, but its Connection interface omits Connect/Connect2/
+  Disconnect - VpnConnection reaches those another way - so this file is written
+  from the upstream documentation rather than copied.
+
+  Connect2() takes the original D-Bus sender so that a proxy such as this one can
+  pass the requesting client through; connman uses it to route agent requests
+  back to the right agent. We register a single process-wide agent, so we pass
+  our own unique name.
+-->
+<node>
+  <interface name="net.connman.vpn.Manager">
+    <method name="Create">
+      <arg name="properties" type="a{sv}" direction="in"/>
+      <arg name="path" type="o" direction="out"/>
+    </method>
+    <method name="Remove">
+      <arg name="identifier" type="o" direction="in"/>
+    </method>
+    <method name="GetConnections">
+      <arg name="connections" type="a(oa{sv})" direction="out"/>
+    </method>
+    <method name="RegisterAgent">
+      <arg name="path" type="o" direction="in"/>
+    </method>
+    <method name="UnregisterAgent">
+      <arg name="path" type="o" direction="in"/>
+    </method>
+    <signal name="ConnectionAdded">
+      <arg name="identifier" type="o"/>
+      <arg name="properties" type="a{sv}"/>
+    </signal>
+    <signal name="ConnectionRemoved">
+      <arg name="identifier" type="o"/>
+    </signal>
+  </interface>
+
+  <interface name="net.connman.vpn.Connection">
+    <method name="GetProperties">
+      <arg name="properties" type="a{sv}" direction="out"/>
+    </method>
+    <method name="SetProperty">
+      <arg name="name" type="s" direction="in"/>
+      <arg name="value" type="v" direction="in"/>
+    </method>
+    <method name="ClearProperty">
+      <arg name="name" type="s" direction="in"/>
+    </method>
+    <method name="Connect"/>
+    <method name="Connect2">
+      <arg name="dbus_sender" type="s" direction="in"/>
+    </method>
+    <method name="Disconnect"/>
+    <signal name="PropertyChanged">
+      <arg name="name" type="s"/>
+      <arg name="value" type="v"/>
+    </signal>
+  </interface>
+</node>

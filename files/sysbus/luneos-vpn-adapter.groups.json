@@ -1,0 +1,5 @@
+{
+ "allowedNames": ["com.webos.service.vpn", "com.palm.vpn"],
+ "vpn.query": ["dev", "oem"],
+ "vpn.management": ["dev", "oem"]
+}

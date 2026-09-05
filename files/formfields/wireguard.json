@@ -1,0 +1,24 @@
+{
+  "vpnAgentGuid": "com.webos.vpn.wireguard",
+  "connmanType": "wireguard",
+  "vpnFormFields": [
+    { "id": "wgPrivateKey", "type": "passwordfield", "label": "Private key",
+      "connmanProperty": "WireGuard.PrivateKey", "required": true },
+    { "id": "wgPublicKey", "type": "textfield", "label": "Peer public key",
+      "connmanProperty": "WireGuard.PublicKey", "required": true },
+    { "id": "wgPresharedKey", "type": "passwordfield", "label": "Preshared key",
+      "connmanProperty": "WireGuard.PresharedKey" },
+    { "id": "wgAddress", "type": "textfield", "label": "Address",
+      "hint": "10.2.0.2/24", "connmanProperty": "WireGuard.Address", "required": true },
+    { "id": "wgDns", "type": "textfield", "label": "DNS servers",
+      "hint": "comma separated", "connmanProperty": "WireGuard.DNS" },
+    { "id": "wgAllowedIPs", "type": "textfield", "label": "Allowed IPs",
+      "value": "0.0.0.0/0, ::/0", "connmanProperty": "WireGuard.AllowedIPs" },
+    { "id": "wgEndpointPort", "type": "textfield", "label": "Endpoint port",
+      "value": "51820", "inputType": "number", "connmanProperty": "WireGuard.EndpointPort" },
+    { "id": "wgListenPort", "type": "textfield", "label": "Local listen port",
+      "inputType": "number", "connmanProperty": "WireGuard.ListenPort" },
+    { "id": "wgKeepalive", "type": "textfield", "label": "Persistent keepalive (s)",
+      "inputType": "number", "connmanProperty": "WireGuard.PersistentKeepalive" }
+  ]
+}

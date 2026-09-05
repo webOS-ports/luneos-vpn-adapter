@@ -1,0 +1,22 @@
+{
+    "vpn.query": [
+        "com.webos.service.vpn/getStatus",
+        "com.webos.service.vpn/getProfileList",
+        "com.webos.service.vpn/getProfileDetails",
+        "com.webos.service.vpn/getConnectionDetails",
+        "com.webos.service.vpn/getAgents",
+        "com.webos.service.vpn/getAgentFormFields"
+    ],
+    "vpn.management": [
+        "com.webos.service.vpn/connect",
+        "com.webos.service.vpn/disconnect",
+        "com.webos.service.vpn/addProfile",
+        "com.webos.service.vpn/updateProfile",
+        "com.webos.service.vpn/deleteProfile",
+        "com.webos.service.vpn/uiPromptResponse",
+        "com.webos.service.vpn/acceptEula",
+        "com.webos.service.vpn/importProfile",
+        "com.webos.service.vpn/importCertificate",
+        "com.webos.service.vpn/setSplitRouting"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "vpnAgentGuid": "com.webos.vpn.pptp",
+  "connmanType": "pptp",
+  "deprecated": true,
+  "note": "PPTP/MS-CHAPv2 is cryptographically broken. Ship it for legacy reachability only; the UI must show the warning field below and must not offer it as a default choice.",
+  "vpnFormFields": [
+    { "id": "pptpDeprecationWarning", "type": "status", "statusType": "error",
+      "value": "PPTP encryption is broken and can be decrypted by an attacker. Use WireGuard or OpenVPN where possible." },
+    { "id": "pptpUser", "type": "textfield", "label": "User name",
+      "connmanProperty": "PPTP.User" },
+    { "id": "pptpPassword", "type": "passwordfield", "label": "Password",
+      "connmanProperty": "PPTP.Password" },
+    { "id": "pppdReqMppe128", "type": "checkbox", "label": "Require MPPE 128-bit",
+      "value": "true", "trueValue": "true", "falseValue": "false",
+      "connmanProperty": "PPPD.RequirMPPE128" },
+    { "id": "pppdRefuseEap", "type": "checkbox", "label": "Refuse EAP",
+      "trueValue": "true", "falseValue": "false",
+      "connmanProperty": "PPPD.RefuseEAP" },
+    { "id": "pppdEchoInterval", "type": "textfield", "label": "LCP echo interval (s)",
+      "inputType": "number", "connmanProperty": "PPPD.EchoInterval" }
+  ]
+}

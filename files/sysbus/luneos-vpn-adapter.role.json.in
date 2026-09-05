@@ -1,0 +1,18 @@
+{
+    "exeName":"@WEBOS_INSTALL_SBINDIR@/luneos-vpn-adapter",
+    "trustLevel": "oem",
+    "type": "privileged",
+    "allowedNames": ["com.webos.service.vpn", "com.palm.vpn"],
+    "permissions": [
+        {
+            "service":"com.webos.service.vpn",
+            "inbound":["*"],
+            "outbound":["*"]
+        },
+        {
+            "service":"com.palm.vpn",
+            "inbound":["*"],
+            "outbound":["*"]
+        }
+    ]
+}

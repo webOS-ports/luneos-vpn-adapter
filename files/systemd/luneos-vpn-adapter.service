@@ -1,0 +1,13 @@
+[Unit]
+Description=LuneOS VPN adapter
+Requires=ls-hubd.service
+After=ls-hubd.service connman-vpn.service
+Wants=connman-vpn.service
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/usr/sbin/luneos-vpn-adapter
+
+[Install]
+WantedBy=multi-user.target

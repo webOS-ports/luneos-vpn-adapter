@@ -1,0 +1,29 @@
+{
+  "vpnAgentGuid": "com.webos.vpn.l2tp",
+  "connmanType": "l2tp",
+  "note": "L2TP/IPsec. Only the fields users actually touch are listed; the full L2TP.* / PPPD.* set from doc/vpn-config-format.txt is accepted by updateProfile.",
+  "vpnFormFields": [
+    { "id": "l2tpUser", "type": "textfield", "label": "User name",
+      "connmanProperty": "L2TP.User" },
+    { "id": "l2tpPassword", "type": "passwordfield", "label": "Password",
+      "connmanProperty": "L2TP.Password" },
+    { "id": "l2tpIpsecSaref", "type": "checkbox", "label": "Use IPsec SA reference",
+      "trueValue": "true", "falseValue": "false",
+      "connmanProperty": "L2TP.IPsecSaref" },
+    { "id": "l2tpPort", "type": "textfield", "label": "UDP port", "value": "1701",
+      "inputType": "number", "connmanProperty": "L2TP.Port" },
+    { "id": "l2tpDefaultRoute", "type": "checkbox", "label": "Use as default route",
+      "value": "true", "trueValue": "true", "falseValue": "false",
+      "connmanProperty": "L2TP.DefaultRoute" },
+    { "id": "pppdReqMppe128", "type": "checkbox", "label": "Require MPPE 128-bit",
+      "trueValue": "true", "falseValue": "false",
+      "connmanProperty": "PPPD.ReqMPPE128" },
+    { "id": "pppdRefuseEap", "type": "checkbox", "label": "Refuse EAP",
+      "trueValue": "true", "falseValue": "false",
+      "connmanProperty": "PPPD.RefuseEAP" },
+    { "id": "pppdEchoInterval", "type": "textfield", "label": "LCP echo interval (s)",
+      "inputType": "number", "connmanProperty": "PPPD.EchoInterval" },
+    { "id": "pppdEchoFailure", "type": "textfield", "label": "LCP echo failures",
+      "inputType": "number", "connmanProperty": "PPPD.EchoFailure" }
+  ]
+}
