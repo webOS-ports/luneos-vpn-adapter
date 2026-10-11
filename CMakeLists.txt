@@ -72,9 +72,10 @@ set(GDBUS_IF_DIR ${WEBOS_BINARY_CONFIGURED_DIR}/src)
 file(MAKE_DIRECTORY ${GDBUS_IF_DIR})
 
 execute_process(COMMAND ${GDBUS_CODEGEN_EXECUTABLE} --c-namespace VpnInterface
-						--generate-c-code ${GDBUS_IF_DIR}/connman-vpn-interface
+						--generate-c-code connman-vpn-interface
 						--interface-prefix net.connman.vpn.
 						${CMAKE_CURRENT_SOURCE_DIR}/files/xml/connman-vpn.xml
+						WORKING_DIRECTORY ${GDBUS_IF_DIR}
 						RESULT_VARIABLE codegen_failed)
 if(codegen_failed)
 		message(FATAL_ERROR "Error in generating code for the connman-vpn interface using gdbus-codegen")
@@ -87,9 +88,10 @@ endif()
 # VpnInterfaceConnection); a separate gdbus-codegen invocation because it is a
 # distinct XML file with --generate-c-code needing its own basename.
 execute_process(COMMAND ${GDBUS_CODEGEN_EXECUTABLE} --c-namespace VpnInterface
-						--generate-c-code ${GDBUS_IF_DIR}/connman-vpn-agent-interface
+						--generate-c-code connman-vpn-agent-interface
 						--interface-prefix net.connman.vpn.
 						${CMAKE_CURRENT_SOURCE_DIR}/files/xml/connman-vpn-agent.xml
+						WORKING_DIRECTORY ${GDBUS_IF_DIR}
 						RESULT_VARIABLE codegen_failed)
 if(codegen_failed)
 		message(FATAL_ERROR "Error in generating code for the connman-vpn agent interface using gdbus-codegen")
