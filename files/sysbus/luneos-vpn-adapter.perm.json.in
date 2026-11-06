@@ -7,7 +7,7 @@
         "vpn.query",
         "vpn.management"
     ],
-    "com.webos.surfacemanager-cardshell": [
+    "com.webos.surfacemanager.cardshell": [
         "vpn.query"
     ],
     "org.webosports.app.settings.vpn-*": [
